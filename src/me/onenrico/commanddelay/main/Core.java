@@ -87,6 +87,7 @@ public class Core extends JavaPlugin {
 		nmsver = nmsver.substring(nmsver.lastIndexOf(".") + 1);
 		actionbar = new ActionBar();
 		ActionBar.setup();
+		
 		particleManager = new ParticleManager();
 
 	}

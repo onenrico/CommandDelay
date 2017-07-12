@@ -75,6 +75,7 @@ public class ParticleUT {
 	public static BukkitTask helixParticle(Player player, float height, float radius) {
 		return new BukkitRunnable() {
 			int cool = 0;
+			@SuppressWarnings("unused")
 			double angle, AxisCos, AxisSin, AxisCos2, AxisSin2, x, z;
 			Vector vec;
 			int count = 0;
