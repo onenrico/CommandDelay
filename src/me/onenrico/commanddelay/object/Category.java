@@ -11,8 +11,9 @@ public class Category {
 	private String blacklist = "disabled";
 	private List<String> worlds = new ArrayList<>();
 	private List<String> commands = new ArrayList<>();
-
+	public String name = "";
 	public Category(String path) {
+		name = path;
 		String pref = "category." + path + ".";
 		cost = ConfigPlugin.getConfig().getDouble(pref + "cost");
 		delay = ConfigPlugin.getConfig().getInt(pref + "delay");

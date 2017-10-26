@@ -5,7 +5,6 @@ import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
-import me.onenrico.commanddelay.config.ConfigPlugin;
 
 public class SoundManager {
 	public static void playSound(Player player, String sound, Location loc, float volume, float pitch) {

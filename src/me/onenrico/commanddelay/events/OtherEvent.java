@@ -32,10 +32,37 @@ public class OtherEvent implements Listener {
 		}
 		String ce = event.getMessage().replace("/", "");
 		String cworld = player.getWorld().getName();
-		if (!PermissionUT.has(player, "commanddelay.bypass")) {
-			for (Category ca : ConfigPlugin.getCategory()) {
-				String blacklist = ca.getBlacklist();
-				if (blacklist == null) {
+		for (Category ca : ConfigPlugin.getCategory()) {
+			if(PermissionUT.has(player, "commanddelay.bypass."+ca.name)) {
+				continue;
+			}
+			String blacklist = ca.getBlacklist();
+			if (blacklist == null) {
+				List<String> commands = ca.getCommands();
+				for (String c : commands) {
+					Boolean pass = false;
+					String ceb = ce.toLowerCase().split(" ")[0];
+					if (!c.contains(" ")) {
+						if (ceb.equals(c)) {
+							pass = true;
+						}
+					} else {
+						if(ce.toLowerCase().startsWith(c.toLowerCase())) {
+							pass = true;
+						}
+					}
+					if (pass) {
+						DelayUT.Delayed(player, ca.getDelay(), ce, ca.getCost());
+						event.setCancelled(true);
+						return;
+					}
+
+				}
+			} else if (blacklist.equalsIgnoreCase("true")) {
+				for (String world : ca.getWorlds()) {
+					if (cworld.equals(world)) {
+						return;
+					}
 					List<String> commands = ca.getCommands();
 					for (String c : commands) {
 						Boolean pass = false;
@@ -45,7 +72,7 @@ public class OtherEvent implements Listener {
 								pass = true;
 							}
 						} else {
-							if(ce.startsWith(c)) {
+							if(ce.toLowerCase().startsWith(c.toLowerCase())) {
 								pass = true;
 							}
 						}
@@ -54,13 +81,12 @@ public class OtherEvent implements Listener {
 							event.setCancelled(true);
 							return;
 						}
-
 					}
-				} else if (blacklist.equalsIgnoreCase("true")) {
-					for (String world : ca.getWorlds()) {
-						if (cworld.equals(world)) {
-							return;
-						}
+
+				}
+			} else if (blacklist.equalsIgnoreCase("false")) {
+				for (String world : ca.getWorlds()) {
+					if (cworld.equals(world)) {
 						List<String> commands = ca.getCommands();
 						for (String c : commands) {
 							Boolean pass = false;
@@ -70,7 +96,7 @@ public class OtherEvent implements Listener {
 									pass = true;
 								}
 							} else {
-								if(ce.startsWith(c)) {
+								if(ce.toLowerCase().startsWith(c.toLowerCase())) {
 									pass = true;
 								}
 							}
@@ -80,36 +106,12 @@ public class OtherEvent implements Listener {
 								return;
 							}
 						}
-
-					}
-				} else if (blacklist.equalsIgnoreCase("false")) {
-					for (String world : ca.getWorlds()) {
-						if (cworld.equals(world)) {
-							List<String> commands = ca.getCommands();
-							for (String c : commands) {
-								Boolean pass = false;
-								String ceb = ce.toLowerCase().split(" ")[0];
-								if (!c.contains(" ")) {
-									if (ceb.equals(c)) {
-										pass = true;
-									}
-								} else {
-									if(ce.startsWith(c)) {
-										pass = true;
-									}
-								}
-								if (pass) {
-									DelayUT.Delayed(player, ca.getDelay(), ce, ca.getCost());
-									event.setCancelled(true);
-									return;
-								}
-							}
-							return;
-						}
+						return;
 					}
 				}
 			}
 		}
+
 		if (ConfigPlugin.getCancel("command")) {
 			DelayUT.cancelTeleport(event.getPlayer());
 		}

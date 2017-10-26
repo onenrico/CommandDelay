@@ -15,6 +15,11 @@ category:
 #   cost: 500
 #   commands:
 #   - "spawn"
+  free:
+    delay: 3600
+    cost: 0
+    commands:
+    - "kit free"
   essentials:
     delay: 5
     cost: 0
@@ -22,19 +27,6 @@ category:
     worlds:
     - "world"
     commands:
-    - "essentials:back"
-    - "essentials:home"
-    - "essentials:jump"
-    - "essentials:spawn"
-    - "essentials:top"
-    - "essentials:tpa"
-    - "essentials:tpaall"
-    - "essentials:tphere"
-    - "essentials:tpo"
-    - "essentials:tpohere"
-    - "essentials:tppos"
-    - "essentials:warp"
-    - "essentials:world"
     - "back"
     - "home"
     - "jump"
@@ -48,6 +40,19 @@ category:
     - "tppos"
     - "warp"
     - "world"
+    - "essentials:back"
+    - "essentials:home"
+    - "essentials:jump"
+    - "essentials:spawn"
+    - "essentials:top"
+    - "essentials:tpa"
+    - "essentials:tpaall"
+    - "essentials:tphere"
+    - "essentials:tpo"
+    - "essentials:tpohere"
+    - "essentials:tppos"
+    - "essentials:warp"
+    - "essentials:world"
 
 #=====-----=====-----=====-----[    Command Cancel    ]-----=====-----=====-----=====#
 # The delayed command will be cancelled if the player executes one of the actions
