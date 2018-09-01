@@ -1,0 +1,134 @@
+# CommandDelay config.yml
+#=====-----=====-----=====-----[      Categories      ]-----=====-----=====-----=====#
+# Each category must have a unique identifier. For example: essentials or factions.
+# Each category has separate delay, list of blacklisted worlds, cost, and commands.
+# If blacklist:false, the worlds list is treated as a whitelist.
+#
+# For example, the Essentials commands below have 5 second delay and cost of 0,
+# except in the listed worlds.
+#
+# To avoid exploits, list the commands with and without plugin prefaces.
+
+category:
+# example:
+#   delay: 5
+#   cost: 500
+#   commands:
+#   - "spawn"
+  free:
+    delay: 3600
+    cost: 0
+    commands:
+    - "kit free"
+  essentials:
+    delay: 5
+    cost: 0
+    blacklist: true
+    worlds:
+    - "world"
+    commands:
+    - "back"
+    - "home"
+    - "jump"
+    - "spawn"
+    - "top"
+    - "tpa"
+    - "tpaall"
+    - "tphere"
+    - "tpo"
+    - "tpohere"
+    - "tppos"
+    - "warp"
+    - "world"
+    - "essentials:back"
+    - "essentials:home"
+    - "essentials:jump"
+    - "essentials:spawn"
+    - "essentials:top"
+    - "essentials:tpa"
+    - "essentials:tpaall"
+    - "essentials:tphere"
+    - "essentials:tpo"
+    - "essentials:tpohere"
+    - "essentials:tppos"
+    - "essentials:warp"
+    - "essentials:world"
+
+#=====-----=====-----=====-----[    Command Cancel    ]-----=====-----=====-----=====#
+# The delayed command will be cancelled if the player executes one of the actions
+# listed here, if the delay_cancel_action is set to true.
+delay_cancel_interact: true
+delay_cancel_move: true
+delay_cancel_jump: false
+delay_cancel_damage: true
+delay_cancel_damaged: true
+delay_cancel_break: true
+delay_cancel_place: true
+delay_cancel_chat: true
+delay_cancel_command: true
+
+#=====-----=====-----=====-----[  TitleBar Messages   ]-----=====-----=====-----=====#
+message_titlebar_enabled: true
+message_titlebar_delaying: "{themecolor}Preparing..."
+message_titlebar_delaying_subtitle: "&ePlease Stay For &6{left} &eSecond"
+message_titlebar_delaying_canceled: "{themecolor}&lCommand /{cmd} Aborted"
+message_titlebar_delaying_canceled_subtitle: "{flatcolor}Please Don't Do Anything"
+message_titlebar_dispatched: "{themecolor}&lCommand /{cmd} Success"
+message_titlebar_dispatched_subtitle: "&6Enjoy Your Day &f{player}"
+
+#=====-----=====-----=====-----[  ActionBar Messages  ]-----=====-----=====-----=====#
+message_actionbar_enabled: true
+message_actionbar_cooldown: "{themecolor}{left} Seconds Left to Command"
+message_actionbar_dispatched: "&lThank's For Playing On This Server"
+message_actionbar_reverse: true
+message_actionbar_symbol: "█"
+#The style of bar Fill
+
+#=====-----=====-----=====-----[    Chat Messages     ]-----=====-----=====-----=====#
+message_chat_enabled: false
+message_chat_delaying: "{flatcolor}Preparing..."
+message_chat_delaying_subtitle: "&ePlease Stay For &6{left} &eSecond"
+message_chat_delaying_canceled: "{themecolor}&lCommand /{cmd} Aborted"
+message_chat_dispatched: "{themecolor}&lCommand /{cmd} Success"
+
+#=====-----=====-----=====-----[       Messages       ]-----=====-----=====-----=====#
+message_prefix: "&8[&dCommandDelay&8]"
+message_command_nomoney: "&cYou Don't Have Enough Money"
+message_command_reload: "&6Config Successfully Reloaded"
+message_command_nopermission: "You Don't Have &8[&f{perm}&8] &cPermission !"
+
+#=====-----=====-----=====-----[     Placeholders     ]-----=====-----=====-----=====#
+# {themecolor} would replaced with Bright random color
+# {flatcolor} would replaced with Darker random color
+# {player} would replaced with Player displayname
+# {left} would replaced by remaining second to wait
+# {x} would replaced by player current X coord location
+# {y} would replaced by player current Y coord location
+# {z} would replaced by player current Z coord location
+# {cmd} would replaced by player current delayed command
+
+#=====-----=====-----=====-----[    Colors Schemes    ]-----=====-----=====-----=====#
+# The placeholder color schemes are defined here.  If multiple colors are listed, they
+# will be rotated every second.
+themecolor:
+- "&a"
+- "&b"
+- "&c"
+- "&e"
+
+flatcolor:
+- "&f"
+
+#=====-----=====-----=====-----[    Other  Feature    ]-----=====-----=====-----=====#
+use_hologram: true
+use_particle: true
+
+#=====-----=====-----=====-----[    Sound Config     ]-----=====-----=====-----=====#
+sound_error: "ENTITY_BLAZE_DEATH"
+sound_tick: "UI_BUTTON_CLICK"
+sound_success: "ENTITY_ENDERMEN_TELEPORT"
+
+#=====-----=====-----=====-----[    Particle Config     ]-----=====-----=====-----=====#
+particle_main: "SNOW_SHOVEL"
+particle_second: "FIREWORKS_SPARK"
+
