@@ -85,8 +85,6 @@ public class Core extends JavaPlugin {
 
 		nmsver = Bukkit.getServer().getClass().getPackage().getName();
 		nmsver = nmsver.substring(nmsver.lastIndexOf(".") + 1);
-		actionbar = new ActionBar();
-		ActionBar.setup();
 		
 		particleManager = new ParticleManager();
 

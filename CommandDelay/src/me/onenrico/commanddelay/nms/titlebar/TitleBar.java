@@ -5,26 +5,18 @@ import java.lang.reflect.Constructor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
-import org.bukkit.plugin.java.JavaPlugin;
 
-public class TitleBar extends JavaPlugin implements Listener {
+public class TitleBar{
 
-	public TitleBar() {
-		// TODO Auto-generated constructor stub
-	}
 
-	@Deprecated
 	public static void sendTitle(Player player, Integer fadeIn, Integer stay, Integer fadeOut, String message) {
 		sendTitle(player, fadeIn, stay, fadeOut, message, null);
 	}
 
-	@Deprecated
 	public static void sendSubtitle(Player player, Integer fadeIn, Integer stay, Integer fadeOut, String message) {
 		sendTitle(player, fadeIn, stay, fadeOut, null, message);
 	}
 
-	@Deprecated
 	public static void sendFullTitle(Player player, Integer fadeIn, Integer stay, Integer fadeOut, String title,
 			String subtitle) {
 		sendTitle(player, fadeIn, stay, fadeOut, title, subtitle);
@@ -53,12 +45,6 @@ public class TitleBar extends JavaPlugin implements Listener {
 	@SuppressWarnings("rawtypes")
 	public static void sendTitle(Player player, Integer fadeIn, Integer stay, Integer fadeOut, String title,
 			String subtitle) {
-		TitleSendEvent titleSendEvent = new TitleSendEvent(player, title, subtitle);
-		Bukkit.getPluginManager().callEvent(titleSendEvent);
-		if (titleSendEvent.isCancelled()) {
-			return;
-		}
-
 		try {
 			Object e;
 			Object chatTitle;
